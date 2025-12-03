@@ -12,6 +12,7 @@ const InvoiceForm = () => {
     }));
   };
 
+  
   const handleItemChange = (index, field, value) => {
     const items = [...invoiceData.items];
     items[index][field] = value;
