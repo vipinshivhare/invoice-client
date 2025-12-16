@@ -120,7 +120,7 @@ const Template3 = ({ data }) => {
             {/* Notes Section */}
             {data.notes && (
                 <div className="pt-3 border-top mt-4">
-                    <h5 className="template3-subheading">Note</h5>
+                    <h5 className="template3-subheading">Remarks:</h5>
                     <p>{data.notes}</p>
                 </div>
             )}

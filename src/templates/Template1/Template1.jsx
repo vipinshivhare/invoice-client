@@ -23,7 +23,7 @@ const Template1 = ({ data }) => {
           <p className="mb-0">Phone: {data.companyPhone}</p>
         </div>
         <div className="col-md-6 text-start text-md-end">
-          <h1 className="mb-2 invoice-title">Invoice</h1>
+          <h1 className="mb-1 invoice-title">Invoice</h1>
           <div className="d-flex flex-column flex-md-row justify-content-md-end gap-2 gap-md-4">
             <div className="w-100 w-md-50 mb-3 mb-md-0">
               <p className="mb-1">
@@ -83,11 +83,16 @@ const Template1 = ({ data }) => {
             <tbody>
               {data.items.map((item, index) => (
                 <tr key={index}>
-                  <td className="p-2">{item.name}</td>
+                  <td className="p-3">
+                                <div className="fw-bold">{index + 1}. {item.name}</div>
+                                <div className="text-muted">{item.description}</div>
+                            </td>
+
                   <td className="p-2 text-center">{item.qty}</td>
-                  <td className="p-2 text-end">₹{item.amount?.toFixed(2)}</td>
+                  <td className="p-2 text-end">₹{Number(item.amount || 0).toFixed(2)}</td>
                   <td className="p-2 text-end">
-                    ₹{(item.qty * item.amount).toFixed(2)}
+                    ₹{(Number(item.qty || 0) * Number(item.amount || 0)).toFixed(2)}
+
                   </td>
                 </tr>
               ))}
@@ -143,7 +148,7 @@ const Template1 = ({ data }) => {
       {/* Notes Section */}
       {data.notes && (
         <div className="mt-4">
-          <h3 className="mb-2 billing-title">Remarks</h3>
+          <h3 className="mb-2 billing-title">Remarks:</h3>
           <p className="mb-0">{data.notes}</p>
         </div>
       )}

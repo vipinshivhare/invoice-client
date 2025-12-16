@@ -1,31 +1,128 @@
+/* ===== Container ===== */
 .template3-container {
-    max-width: 800px;
+  max-width: 860px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e6e0ff;
+  box-shadow: 0 10px 28px rgba(138, 63, 243, 0.12);
+  font-family: "Inter", system-ui, -apple-system;
+  color: #1f2937;
+  padding: 24px;              /* 🔥 reduced */
 }
 
+/* ===== Headings ===== */
 .template3-heading {
-    color: #8a3ff3;
-    font-size: 2rem;
-    font-weight: bold;
+  color: #8a3ff3;
+  font-size: 2.1rem;          /* 🔥 slightly reduced */
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 6px;         /* 🔥 reduce */
+}
+
+.template3 .company-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #8a3ff3;
+  margin-bottom: 2px;         /* 🔥 reduce */
 }
 
 .template3-subheading {
-    color: #8a3ff3;
+  color: #8a3ff3;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;         /* 🔥 reduce */
+  letter-spacing: 0.6px;
+  margin-bottom: 4px;         /* 🔥 reduce */
 }
 
+/* ===== Paragraph spacing ===== */
+.template3 p {
+  margin-bottom: 3px;         /* 🔥 reduce */
+  font-size: 0.93rem;
+  color: #374151;
+}
+
+/* ===== Billing Boxes ===== */
 .template3-bill-box {
-    background-color: #f5f0ff;
+  background: linear-gradient(135deg, #f7f3ff, #ede6ff);
+  border: 1px solid #e1d7ff;
+  border-radius: 12px;
+  padding: 12px 14px;         /* 🔥 reduced */
+}
+
+/* ===== Table ===== */
+.template3 table {
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .template3-table-header {
-    background-color: #8a3ff3 !important;
-    color: white !important;
+  background: linear-gradient(135deg, #8a3ff3, #6d28d9) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.8rem;          /* 🔥 reduced */
+  border: none !important;
 }
 
+.template3 td {
+  font-size: 0.93rem;
+  border-color: #ede9fe !important;
+  padding: 10px;              /* 🔥 reduced */
+}
+
+.template3 tbody tr:nth-child(even) td {
+  background-color: #f4edfe;
+}
+
+.template3 tbody tr:hover td {
+  background-color: #faf8ff;
+}
+
+/* ===== Totals Box ===== */
 .template3-total-box {
-    width: 100%;
-    max-width: 300px;
+  width: 100%;
+  max-width: 300px;           /* 🔥 reduced */
+  background: #faf8ff;
+  border: 1px solid #e5dbff;
+  border-radius: 12px;
+  padding: 12px 14px;         /* 🔥 reduced */
+  margin-top: 12px;           /* 🔥 reduce */
 }
 
-.template3-total,.template3 .company-title {
-    color: #8a3ff3;
+.template3-total-box span {
+  font-size: 0.92rem;
+}
+
+.template3-total {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #8a3ff3;
+  border-top: 2px dashed #d6c9ff;
+  padding-top: 6px;           /* 🔥 reduced */
+  margin-top: 6px;
+}
+
+/* ===== Bank & Notes ===== */
+.template3 h6,
+.template3 h5 {
+  font-weight: 700;
+  margin-bottom: 4px;         /* 🔥 reduce */
+}
+
+.template3 .border-top {
+  border-top: 1px dashed #d6c9ff !important;
+  margin-top: 12px;           /* 🔥 reduce */
+  padding-top: 8px;
+}
+
+/* ===== Print Friendly ===== */
+@media print {
+  .template3-container {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
 }

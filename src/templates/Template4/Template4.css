@@ -1,34 +1,112 @@
-.template4 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff;
-    color: #000;
+:root {
+  --t4-primary: #00a9e0;
 }
 
+/* ===== Base ===== */
+.template4 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+/* ===== Company & Title ===== */
 .template4-company-name {
-    color: #00a9e0;
-    font-weight: bold;
+  color: var(--t4-primary);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 2px;        /* 🔥 reduce */
 }
 
 .template4-title {
-    font-weight: 600;
-}
-
-.template4-table-head {
-    background-color: #00a9e0 !important;
-    color: #fff !important;
-}
-
-.template4-totals-box {
-    max-width: 400px;
-}
-
-.template4-total-due {
-    background-color: #00a9e0;
-    color: white;
-    padding: 10px;
-    border-radius: 4px;
+  font-weight: 600;
+  margin-bottom: 4px;        /* 🔥 reduce */
 }
 
 .template4-primary-color {
-    color: #00a9e0;
+  color: var(--t4-primary);
+}
+
+/* ===== Table ===== */
+.template4-table-head {
+  background-color: var(--t4-primary) !important;
+  color: #fff !important;
+}
+
+.template4 tbody tr:nth-child(even) td {
+  background-color: #ecfaff;
+}
+
+/* ===== Billing Section ===== */
+.template4-billing {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;                 /* 🔥 reduced */
+  margin-bottom: 16px;       /* 🔥 reduced */
+}
+
+.template4-bill-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid var(--t4-primary);
+  padding: 12px 14px;        /* 🔥 reduced */
+  border-radius: 10px;
+}
+
+.template4-bill-card h6 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 4px;        /* 🔥 reduce */
+}
+
+.template4-bill-card p {
+  font-size: 0.9rem;
+  color: #374151;
+  margin: 2px 0;
+}
+
+/* ===== Totals ===== */
+.template4-totals {
+  max-width: 380px;
+  margin-left: auto;
+  margin-top: 12px;          /* 🔥 reduced */
+}
+
+.template4-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.template4-summary-table td {
+  border: 1px solid #dbeafe;
+  padding: 8px;              /* 🔥 reduced */
+  font-size: 0.92rem;
+}
+
+.template4-grand-total-row td {
+  border-top: 2px solid var(--t4-primary);
+  color: var(--t4-primary);
+  font-weight: 800;
+}
+
+/* ===== Notes ===== */
+.template4-notes {
+  margin-top: 14px;          /* 🔥 reduced */
+  border-top: 1px dashed #dbeafe;
+  padding-top: 8px;
+}
+
+.template4-notes h6 {
+  font-weight: 700;
+  color: var(--t4-primary);
+  margin-bottom: 4px;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 640px) {
+  .template4-billing {
+    grid-template-columns: 1fr;
+  }
 }

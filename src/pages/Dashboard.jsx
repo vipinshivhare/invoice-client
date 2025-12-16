@@ -9,6 +9,8 @@ import { useAuth } from "@clerk/clerk-react";
 function Dashboard() {
   const [invoices, setInvoices] = useState([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
   const { baseURL, setInvoiceData, setSelectedTemplate, setInvoiceTitle } =
     useContext(AppContext);
 
@@ -39,6 +41,48 @@ function Dashboard() {
   };
   fetchInvoices();
 }, [baseURL]);
+
+useEffect(() => {
+  const fetchInvoices = async () => {
+    try {
+      setLoading(true);
+      const token = await getToken();
+      const response = await getAllInvoices(baseURL, token);
+      setInvoices(response.data);
+    } catch (error) {
+      console.error("Failed to load invoices", error);
+      toast.error("Something went wrong. Unable to load invoices");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchInvoices();
+}, [baseURL]);
+
+
+const LoaderCards = () => (
+  <>
+    {Array.from({ length: 7 }).map((_, i) => (
+      <div key={i} className="col">
+        <div
+          className="card h-100 shadow-sm placeholder-glow"
+          style={{ minHeight: "270px" }}
+        >
+          <div
+            className="placeholder col-12"
+            style={{ height: "200px" }}
+          ></div>
+          <div className="card-body">
+            <p className="card-title placeholder col-8"></p>
+            <p className="placeholder col-6"></p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </>
+);
+
 
   const handleViewClick = (invoice) => {
     setInvoiceData(invoice);
@@ -71,30 +115,39 @@ function Dashboard() {
         </div>
 
         {/* Render Existing Invoices */}
-        {invoices.map((invoice, idx) => (
-          <div key={idx} className="col">
-            <div
-              className="card h-100 shadow-sm"
-              style={{ cursor: "pointer", minHeight: "270px" }}
-              onClick={() => handleViewClick(invoice)}
-            >
-              {invoice.thumbnailUrl && (
-                <img
-                  src={invoice.thumbnailUrl}
-                  className="card-img-top"
-                  alt="Invoice Thumbnail"
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
-              )}
-              <div className="card-body">
-                <h6 className="card-title mb-1">{invoice.title}</h6>
-                <small className="text-muted">
-                  Last Updated: {formatDate(invoice.lastUpdatedAt)}
-                </small>
+        {loading ? (
+          <LoaderCards />
+        ) : invoices.length === 0 ? (
+          <div className="col-12 text-center text-muted mt-4">
+            No invoices found
+          </div>
+        ) : (
+          invoices.map((invoice, idx) => (
+            <div key={idx} className="col">
+              <div
+                className="card h-100 shadow-sm"
+                style={{ cursor: "pointer", minHeight: "270px" }}
+                onClick={() => handleViewClick(invoice)}
+              >
+                {invoice.thumbnailUrl && (
+                  <img
+                    src={invoice.thumbnailUrl}
+                    className="card-img-top"
+                    alt="Invoice Thumbnail"
+                    style={{ height: "200px", objectFit: "cover" }}
+                  />
+                )}
+                <div className="card-body">
+                  <h6 className="card-title mb-1">{invoice.title}</h6>
+                  <small className="text-muted">
+                    Last Updated: {formatDate(invoice.lastUpdatedAt)}
+                  </small>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
+
       </div>
     </div>
   );

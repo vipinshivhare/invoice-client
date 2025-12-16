@@ -1,0 +1,181 @@
+:root {
+  --t6-primary: #eb2525;
+  --t6-border: #e5e7eb;
+  --t6-light: #ffebeb;
+  --t6-text: #1b2a3e;
+}
+
+/* ===== Container ===== */
+.template6-container {
+  max-width: 880px;
+  padding: 28px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid var(--t6-border);
+  border-radius: 14px;
+  font-family: "Inter", system-ui, -apple-system;
+  color: var(--t6-text);
+}
+
+/* ===== Header ===== */
+.template6-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px; /* 🔥 tight spacing */
+}
+
+.template6-header p {
+  margin: 2px 0;
+  font-size: 0.92rem;
+}
+
+.invoice-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--t6-primary);
+  margin-bottom: 4px;
+}
+
+.template6-logo {
+  max-width: 100px;
+  margin-bottom: 4px;
+}
+
+.template6-company {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--t6-primary);
+  margin-bottom: 2px;
+}
+
+/* ===== Billing Section ===== */
+.template6-billing {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 12px 0; /* 🔥 controlled gap */
+}
+
+.template6-billing > div {
+  background: #fff5f5;
+  border: 1px solid #e98c8c;
+  border-left: 4px solid var(--t6-primary);
+  padding: 12px 14px;
+  border-radius: 10px;
+}
+
+.template6-billing h6 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--t6-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+}
+
+.template6-billing p {
+  margin: 2px 0;
+  font-size: 0.92rem;
+  color: #374151;
+}
+
+/* ===== Table ===== */
+.template6-table-wrapper {
+  margin-top: 12px;
+}
+
+.template6-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.template6-table th {
+  background: linear-gradient(135deg, #e96565, #ae2121);
+  color: #ffffff;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+.template6-table td {
+  border: 1px solid var(--t6-border);
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.template6-table tbody tr:nth-child(even) td {
+  background: var(--t6-light);
+}
+
+/* ===== Totals ===== */
+.template6-totals {
+  max-width: 320px;
+  margin-left: auto;
+  margin-top: 14px; /* 🔥 reduced gap */
+  background: #ffefef;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--t6-border);
+}
+
+.template6-totals div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 0.92rem;
+}
+
+.template6-grand-total {
+  font-weight: 800;
+  font-size: 1.1rem;
+  border-top: 2px dashed #e98c8c;
+  padding-top: 8px;
+  color: var(--t6-primary);
+}
+
+/* ===== Bank & Notes ===== */
+.template6-bank,
+.template6-notes {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--t6-border);
+}
+
+.template6-bank h6,
+.template6-notes h6 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--t6-primary);
+  margin-bottom: 4px;
+}
+
+.template6-bank p,
+.template6-notes p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 640px) {
+  .template6-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .template6-billing {
+    grid-template-columns: 1fr;
+  }
+
+  .template6-totals {
+    max-width: 100%;
+  }
+}
+
+/* ===== Print ===== */
+@media print {
+  .template6-container {
+    border: none;
+    padding: 20px;
+  }
+}

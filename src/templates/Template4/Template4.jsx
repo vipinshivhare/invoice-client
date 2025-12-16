@@ -46,12 +46,24 @@ const Template4 = ({ data }) => {
             </div>
 
             {/* Billing */}
-            <div className="mb-4 w-50">
-                <h6 className="fw-bold template4-primary-color">Billed to</h6>
-                <p className="mb-1">{data.billingName}</p>
+            <div className="template4-billing">
+            <div className="template4-bill-card">
+                <h6 className="template4-primary-color">Billed To</h6>
+                <p className="fw-semibold mb-1">{data.billingName}</p>
                 <p className="mb-1">{data.billingAddress}</p>
                 <p className="mb-0">{data.billingPhone}</p>
             </div>
+
+            {data.shippingName && (
+                <div className="template4-bill-card">
+                <h6 className="template4-primary-color">Shipped To</h6>
+                <p className="fw-semibold mb-1">{data.shippingName}</p>
+                <p className="mb-1">{data.shippingAddress}</p>
+                <p className="mb-0">{data.shippingPhone}</p>
+                </div>
+            )}
+            </div>
+
 
             {/* Items Table */}
             <div className="table-responsive mb-4">
@@ -81,26 +93,31 @@ const Template4 = ({ data }) => {
             </div>
 
             {/* Totals Table with proper width and right alignment */}
-            <div className="d-flex justify-content-end">
-                <div style={{ width: '100%', maxWidth: '400px' }}>
-                    <table className="table table-bordered mb-0">
-                        <tbody>
-                        <tr>
-                            <td><strong>Sub Total</strong></td>
-                            <td className="text-end">{data.currencySymbol}{subtotal.toFixed(2)}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tax ({data.tax}%)</strong></td>
-                            <td className="text-end">{data.currencySymbol}{taxAmount.toFixed(2)}</td>
-                        </tr>
-                        <tr>
-                            <td className="fw-bold template4-table-head"><strong>Total Due Amount</strong></td>
-                            <td className="text-end fw-bold template4-table-head">{data.currencySymbol}{total.toFixed(2)}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div className="template4-totals">
+                <table className="template4-summary-table">
+                    <tbody>
+                    <tr>
+                        <td>Sub Total</td>
+                        <td className="text-end">
+                        {data.currencySymbol}{subtotal.toFixed(2)}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tax ({data.tax}%)</td>
+                        <td className="text-end">
+                        {data.currencySymbol}{taxAmount.toFixed(2)}
+                        </td>
+                    </tr>
+                    <tr className="template4-grand-total-row">
+                        <td className="fw-bold">Total Due</td>
+                        <td className="text-end fw-bold">
+                        {data.currencySymbol}{total.toFixed(2)}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
+
 
             {/* Bank Account Details Section */}
             {(data.accountName || data.accountNumber || data.accountIfscCode) && (
@@ -114,8 +131,9 @@ const Template4 = ({ data }) => {
 
             {/* Footer */}
             {data?.notes && (
-                <div className="text-center mt-5">
-                    <p className="mb-0">{data.notes}</p>
+                <div className="template4-notes">
+                    <h6>Remarks:</h6>
+                    <p>{data.notes}</p>
                 </div>
             )}
         </div>

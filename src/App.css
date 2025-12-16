@@ -1,0 +1,9 @@
+.template1-container,
+.template2-container,
+.template3-container,
+.template4-container,
+.template5-container,
+.template6-container {
+  height: auto;
+  overflow: visible;
+}

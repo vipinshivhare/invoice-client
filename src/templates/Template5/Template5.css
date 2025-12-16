@@ -1,3 +1,165 @@
-.template5 tr.items-row, .template5 thead tr {
-    border-bottom: 2px solid black !important;
+:root {
+  --t5-primary: #f8c51e;
+  --t5-border: #e5e7eb;
+  --t5-light: #fff8e1;
+  --t5-text: #1f2937;
+}
+
+/* ===== Container ===== */
+.template5-container {
+  max-width: 900px;
+  padding: 24px;              /* 🔥 reduced */
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid var(--t5-border);
+  border-radius: 12px;
+  font-family: "Inter", system-ui;
+  color: var(--t5-text);
+}
+
+/* ===== Header ===== */
+.template5-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;        /* 🔥 reduced */
+}
+
+.template5-header p {
+  margin: 2px 0;
+  font-size: 0.92rem;
+}
+
+.template5-title {
+  color: var(--t5-primary);
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.template5-company {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--t5-primary);
+  margin-bottom: 2px;
+}
+
+/* ===== Address ===== */
+.template5-address {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;        /* 🔥 reduced */
+}
+
+.template5-address h6 {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--t5-primary);
+  margin-bottom: 4px;
+}
+
+.template5-address p {
+  margin: 2px 0;
+  font-size: 0.92rem;
+}
+
+/* ===== Table ===== */
+.template5-table-wrapper {
+  margin-top: 8px;            /* 🔥 reduced */
+}
+
+.template5-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.template5-table th {
+  background: var(--t5-primary);
+  color: #000;
+  padding: 10px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.template5-table td {
+  border: 1px solid var(--t5-border);
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.template5-table tbody tr:nth-child(even) td {
+  background: var(--t5-light);
+}
+
+/* ===== Totals ===== */
+.template5-totals {
+  max-width: 340px;
+  margin-left: auto;
+  margin-top: 12px;           /* 🔥 reduced */
+}
+
+.template5-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.template5-summary-table td {
+  border: 1px solid var(--t5-border);
+  padding: 8px;               /* 🔥 reduced */
+  font-size: 0.92rem;
+}
+
+.template5-grand-total td {
+  border-top: 2px solid var(--t5-primary);
+  color: var(--t5-primary);
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+/* ===== Bank & Notes ===== */
+.template5-bank,
+.template5-notes {
+  margin-top: 14px;           /* 🔥 reduced */
+  padding-top: 8px;
+  border-top: 1px dashed var(--t5-border);
+}
+
+.template5-bank h6,
+.template5-notes h6 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--t5-primary);
+  margin-bottom: 4px;
+}
+
+.template5-bank p,
+.template5-notes p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 640px) {
+  .template5-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .template5-address {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .template5-totals {
+    max-width: 100%;
+  }
+}
+
+/* ===== Print ===== */
+@media print {
+  .template5-container {
+    border: none;
+    padding: 20px;
+  }
 }

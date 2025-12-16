@@ -1,11 +1,12 @@
 import React from "react";
-import "./Template5.css";
+import "./Template6.css";
 
-const Template5 = ({ data }) => {
-  const subtotal = data.items.reduce(
-    (acc, item) => acc + item.qty * item.amount,
-    0
-  );
+const Template6 = ({ data }) => {
+  const subtotal =
+    data.items.reduce(
+      (acc, item) => acc + item.qty * item.amount,
+      0
+    ) || 0;
 
   const taxAmount = (subtotal * (data.tax || 0)) / 100;
   const total = subtotal + taxAmount;
@@ -13,8 +14,8 @@ const Template5 = ({ data }) => {
   const formatDate = (dateString) => {
     try {
       return new Date(dateString).toLocaleDateString("en-US", {
-        month: "short",
         day: "numeric",
+        month: "short",
         year: "numeric",
       });
     } catch {
@@ -23,37 +24,41 @@ const Template5 = ({ data }) => {
   };
 
   return (
-    <div className="template5-container mx-auto my-4">
+    <div className="template6-container mx-auto my-4">
       {/* ===== Header ===== */}
-      <div className="template5-header">
+      <div className="template6-header">
         <div>
-          {data.companyLogo && (
-            <img src={data.companyLogo} alt="Company Logo" width={90} />
-          )}
-          <h4 className="template5-company">{data.companyName}</h4>
-          <p>{data.companyAddress}</p>
-          <p>{data.companyPhone}</p>
-        </div>
-
-        <div className="text-end">
-          <h5 className="template5-title">INVOICE</h5>
-          <p><strong>No:</strong> {data.invoiceNumber}</p>
+          <h1 className="mb-1 invoice-title">Invoice</h1>
+          <p><strong>Invoice #:</strong> {data.invoiceNumber}</p>
           <p><strong>Date:</strong> {formatDate(data.invoiceDate)}</p>
           <p><strong>Due:</strong> {formatDate(data.paymentDate)}</p>
         </div>
+
+        <div className="text-end">
+          {data.companyLogo && (
+            <img
+              src={data.companyLogo}
+              alt="Company Logo"
+              className="template6-logo"
+            />
+          )}
+          <h4 className="template6-company">{data.companyName}</h4>
+          <p>{data.companyAddress}</p>
+          <p>{data.companyPhone}</p>
+        </div>
       </div>
 
-      {/* ===== Addresses ===== */}
-      <div className="template5-address">
+      {/* ===== Billing ===== */}
+      <div className="template6-billing">
         <div>
-          <h6>Bill To</h6>
+          <h6>Billed To</h6>
           <p>{data.billingName}</p>
           <p>{data.billingAddress}</p>
           <p>{data.billingPhone}</p>
         </div>
 
         {data.shippingName && (
-          <div className="text-end">
+          <div>
             <h6>Shipped To</h6>
             <p>{data.shippingName}</p>
             <p>{data.shippingAddress}</p>
@@ -63,21 +68,23 @@ const Template5 = ({ data }) => {
       </div>
 
       {/* ===== Items ===== */}
-      <div className="template5-table-wrapper">
-        <table className="template5-table">
+      <div className="template6-table-wrapper">
+        <table className="template6-table">
           <thead>
             <tr>
-              <th># / Description</th>
+              <th>#</th>
+              <th>Description</th>
               <th className="text-center">Qty</th>
               <th className="text-end">Rate</th>
               <th className="text-end">Amount</th>
             </tr>
           </thead>
           <tbody>
-            {data.items.map((item, index) => (
-              <tr key={index}>
+            {data.items.map((item, i) => (
+              <tr key={i}>
+                <td>{i + 1}</td>
                 <td>
-                  <strong>{index + 1}. {item.name}</strong>
+                  <strong>{item.name}</strong>
                   {item.description && (
                     <div className="text-muted small">
                       {item.description}
@@ -98,35 +105,25 @@ const Template5 = ({ data }) => {
       </div>
 
       {/* ===== Totals ===== */}
-      <div className="template5-totals">
-        <table className="template5-summary-table">
-          <tbody>
-            <tr>
-              <td>Subtotal</td>
-              <td className="text-end">
-                {data.currencySymbol}{subtotal.toFixed(2)}
-              </td>
-            </tr>
-            <tr>
-              <td>Tax ({data.tax}%)</td>
-              <td className="text-end">
-                {data.currencySymbol}{taxAmount.toFixed(2)}
-              </td>
-            </tr>
-            <tr className="template5-grand-total">
-              <td><strong>Total</strong></td>
-              <td className="text-end">
-                <strong>{data.currencySymbol}{total.toFixed(2)}</strong>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="template6-totals">
+        <div>
+          <span>Subtotal</span>
+          <span>{data.currencySymbol}{subtotal.toFixed(2)}</span>
+        </div>
+        <div>
+          <span>Tax ({data.tax}%)</span>
+          <span>{data.currencySymbol}{taxAmount.toFixed(2)}</span>
+        </div>
+        <div className="template6-grand-total">
+          <span>Total</span>
+          <span>{data.currencySymbol}{total.toFixed(2)}</span>
+        </div>
       </div>
 
       {/* ===== Bank ===== */}
       {(data.accountName || data.accountNumber || data.accountIfscCode) && (
-        <div className="template5-bank">
-          <h6>Bank Account Details</h6>
+        <div className="template6-bank">
+          <h6>Bank Details</h6>
           {data.accountName && <p><strong>Name:</strong> {data.accountName}</p>}
           {data.accountNumber && <p><strong>Account:</strong> {data.accountNumber}</p>}
           {data.accountIfscCode && <p><strong>IFSC:</strong> {data.accountIfscCode}</p>}
@@ -135,7 +132,7 @@ const Template5 = ({ data }) => {
 
       {/* ===== Notes ===== */}
       {data.notes && (
-        <div className="template5-notes">
+        <div className="template6-notes">
           <h6>Remarks:</h6>
           <p>{data.notes}</p>
         </div>
@@ -144,4 +141,4 @@ const Template5 = ({ data }) => {
   );
 };
 
-export default Template5;
+export default Template6;

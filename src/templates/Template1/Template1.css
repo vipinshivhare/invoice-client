@@ -1,45 +1,127 @@
-/* template1.css */
-
+/* ===== Container ===== */
 .w-800 {
-    max-width: 800px;
+  max-width: 860px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #fed7aa;
+  box-shadow: 0 10px 28px rgba(234, 88, 12, 0.12);
+  font-family: "Inter", system-ui, -apple-system;
+  color: #1f2937;
+  padding: 20px;              /* 🔥 controlled spacing */
 }
 
+/* ===== Company & Invoice Title ===== */
 .company-title {
-    font-size: 18px;
-    font-weight: bold;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #ea580c;
+  margin-bottom: 2px;         /* 🔥 reduce gap */
 }
 
 .invoice-title {
-    color: #ea580c;
-    font-size: 28px;
-    font-weight: bold;
+  color: #ea580c;
+  font-size: 2rem;            /* 🔥 slightly smaller */
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  margin-bottom: 4px;
 }
 
+/* ===== Billing Titles ===== */
 .billing-title {
-    color: #ea580c;
-    font-size: 16px;
-    font-weight: bold;
+  color: #ea580c;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 4px;         /* 🔥 reduce */
 }
 
+/* ===== Paragraphs ===== */
+.template1 p {
+  margin-bottom: 3px;         /* 🔥 reduce */
+  font-size: 0.92rem;
+}
+
+/* ===== Borders ===== */
 .orange-border {
-    border-color: #ea580c !important;
+  border-color: #fed7aa !important;
+  margin: 10px 0;             /* 🔥 reduce hr spacing */
 }
 
+/* ===== Billing Boxes ===== */
 .billing-box {
-    background-color: #fff7ed;
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  padding: 12px 14px;         /* 🔥 reduce */
+}
+
+/* ===== Table ===== */
+.table {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;        /* 🔥 reduce */
 }
 
 .table-header {
-    background-color: #ea580c !important;
-    color: white !important;
+  background: linear-gradient(135deg, #ea580c, #c2410c) !important;
+  color: white !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;          /* 🔥 slightly smaller */
+  border: none !important;
 }
 
+.table td {
+  font-size: 0.92rem;
+  border-color: #ffedd5 !important;
+  vertical-align: top;
+  line-height: 1.35;          /* 🔥 tighter rows */
+  padding: 8px 10px;          /* 🔥 reduce */
+}
+
+/* item number + name clarity */
+.table td strong {
+  color: #9a3412;
+  font-weight: 700;
+}
+
+.table tbody tr:hover td {
+  background-color: #fff7ed;
+}
+
+/* zebra rows */
+.template1 tbody tr:nth-child(even) td {
+  background-color: #ffece3;
+}
+
+/* ===== Totals Box ===== */
 .totals-box {
-    font-size: 16px;
-    font-weight: bold;
-    background-color: #fff7ed;
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  padding: 12px 14px;         /* 🔥 reduce */
+  margin-top: 8px;            /* 🔥 reduce */
 }
 
-.total-highlight,.template1 .company-title {
-    color: #ea580c;
+.total-highlight {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ea580c;
+  border-top: 2px dashed #fdba74;
+  padding-top: 6px;           /* 🔥 reduce */
+  margin-top: 6px;
+}
+
+/* ===== Print Friendly ===== */
+@media print {
+  .w-800 {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
 }
